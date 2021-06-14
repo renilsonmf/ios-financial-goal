@@ -9,9 +9,53 @@ import UIKit
 
 class LoggedOutView: UIView {
     
-    //MARK: Actions
+    //MARK: PageControl
+    public let scrollView = UIScrollView()
     
+    public let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = 4
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .systemGreen
+        
+        return pageControl
+    }()
     
+    public func configureScrollView(view: UIView){
+        scrollView.contentSize = CGSize(width: view.frame.size.width*4, height: scrollView.frame.size.height)
+        scrollView.isPagingEnabled = true
+        
+        let imagePage: [UIImage] = [.imageDescomplicou, .imagePlanejamento, .imageFicaDica, .imageNaPalmaDaMao]
+        
+        for i in 0..<4{
+            let page = UIImageView(frame: CGRect(x: CGFloat(i) * view.frame.size.width, y: 0, width: view.frame.size.width, height: scrollView.frame.size.height))
+            
+            page.image = imagePage[i]
+            scrollView.addSubview(page)
+        }
+    }
+    
+    func addToViewControllerPageControl(view: UIView){
+        view.backgroundColor = .lightGray
+        pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
+        view.addSubview(scrollView)
+        view.addSubview(pageControl)
+    }
+    
+    // rola o slide de acordo com o click no page control
+    @objc private func pageControlDidChange(_ sender: UIPageControl){
+        let current = sender.currentPage
+        scrollView.setContentOffset(CGPoint(x: CGFloat(current) * scrollView.frame.size.width, y: 0), animated: true)
+    }
+    
+    func setFramePageScroll(view: UIView){
+        pageControl.frame = CGRect(x: 0, y: scrollView.frame.size.height-18, width: view.frame.size.width, height: 70)
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 460)
+        
+        if scrollView.subviews.count == 2 {
+            configureScrollView(view: view)
+        }
+    }
     //MARK: BUTTONS
     let buttonCreateAccount: UIButton = {
         let button = UIButton()
@@ -30,7 +74,7 @@ class LoggedOutView: UIView {
         button.frame = .zero
         button.layer.cornerRadius = 6
         button.backgroundColor = .black
-        button.setTitle("Login", for: .normal)
+        button.setTitle("LOGIN", for: .normal)
         button.tintColor = .gray
         return button
     }()
@@ -42,10 +86,11 @@ class LoggedOutView: UIView {
       
        addSubview(buttonCreateAccount)
        NSLayoutConstraint.activate([
-           buttonCreateAccount.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -144),
-           buttonCreateAccount.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-           buttonCreateAccount.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-           buttonCreateAccount.heightAnchor.constraint(equalToConstant: 48)
+           //buttonCreateAccount.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -130),
+        buttonCreateAccount.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -144),
+           buttonCreateAccount.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+           buttonCreateAccount.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+           buttonCreateAccount.heightAnchor.constraint(equalToConstant: 52)
        ])
    }
     
@@ -54,10 +99,10 @@ class LoggedOutView: UIView {
         
        addSubview(buttonLogin)
        NSLayoutConstraint.activate([
-           buttonLogin.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -77),
-           buttonLogin.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-           buttonLogin.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-           buttonLogin.heightAnchor.constraint(equalToConstant: 48)
+           buttonLogin.topAnchor.constraint(equalTo: self.buttonCreateAccount.bottomAnchor, constant: 15),
+           buttonLogin.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+           buttonLogin.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+           buttonLogin.heightAnchor.constraint(equalToConstant: 52)
        ])
    }
    
@@ -87,7 +132,7 @@ class LoggedOutView: UIView {
     }
     
     func createViewButton(){
-        self.backgroundColor = .gray
+       // self.backgroundColor = .white
         setButtonCreateAccount()
         setButtonLogin()
 
