@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import financialGoal
-
 class financialGoalTests: XCTestCase {
 
     override func setUpWithError() throws {
