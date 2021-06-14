@@ -16,7 +16,7 @@
   build: Alteração que afeta a compilação  
   feat: Adição de uma nova feature
   fix: Correção de erro 
-  merge: Mara casos de merge
+  merge: Para casos de merge
   ```
   
   >Para os casos de merge não precisa o código do Jira pois não vai existir, afinal é um merge.
