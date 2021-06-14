@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CC542A72677DCA500A807B4 /* LoggedOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC542A62677DCA500A807B4 /* LoggedOutViewController.swift */; };
+		1CC542AC2677DCFD00A807B4 /* LoggedOutCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC542AB2677DCFD00A807B4 /* LoggedOutCoordinator.swift */; };
+		1CC542B32677DDBE00A807B4 /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC542B22677DDBE00A807B4 /* LoggedOutView.swift */; };
 		3FE995E4267792B70068E95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE995E3267792B70068E95B /* AppDelegate.swift */; };
 		3FE995E6267792B70068E95B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE995E5267792B70068E95B /* SceneDelegate.swift */; };
 		3FE995E8267792B70068E95B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE995E7267792B70068E95B /* ViewController.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CC542A62677DCA500A807B4 /* LoggedOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutViewController.swift; sourceTree = "<group>"; };
+		1CC542AB2677DCFD00A807B4 /* LoggedOutCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutCoordinator.swift; sourceTree = "<group>"; };
+		1CC542B22677DDBE00A807B4 /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		3FE995E0267792B70068E95B /* financialGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = financialGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE995E3267792B70068E95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FE995E5267792B70068E95B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +98,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CC542B02677DD5A00A807B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1CC542B12677DD6300A807B4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1CC542B72677DDC400A807B4 /* Logged_out */ = {
+			isa = PBXGroup;
+			children = (
+				1CC542B22677DDBE00A807B4 /* LoggedOutView.swift */,
+				1CC542A62677DCA500A807B4 /* LoggedOutViewController.swift */,
+			);
+			path = Logged_out;
+			sourceTree = "<group>";
+		};
 		3FE995D7267792B70068E95B = {
 			isa = PBXGroup;
 			children = (
@@ -160,24 +189,10 @@
 				3FE9961E2677A4DD0068E95B /* Infrastructure */,
 				3FE996182677942B0068E95B /* Controller */,
 				3FE99617267794280068E95B /* Coordinator */,
-				3FE99616267794250068E95B /* Model */,
-				3FE99615267794210068E95B /* ViewModel */,
+				1CC542B12677DD6300A807B4 /* ViewModel */,
+				1CC542B02677DD5A00A807B4 /* Model */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		3FE99615267794210068E95B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		3FE99616267794250068E95B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3FE99617267794280068E95B /* Coordinator */ = {
@@ -185,6 +200,7 @@
 			children = (
 				3FE996192677A4770068E95B /* Coordinator.swift */,
 				3FE996222677A6550068E95B /* StartCoordinator.swift */,
+				1CC542AB2677DCFD00A807B4 /* LoggedOutCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -192,6 +208,7 @@
 		3FE996182677942B0068E95B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1CC542B72677DDC400A807B4 /* Logged_out */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -375,12 +392,15 @@
 				3FE9961A2677A4770068E95B /* Coordinator.swift in Sources */,
 				3FE995E8267792B70068E95B /* ViewController.swift in Sources */,
 				3FE9961D2677A4B30068E95B /* String+.swift in Sources */,
+				1CC542AC2677DCFD00A807B4 /* LoggedOutCoordinator.swift in Sources */,
 				3FE995E4267792B70068E95B /* AppDelegate.swift in Sources */,
 				3FE995E6267792B70068E95B /* SceneDelegate.swift in Sources */,
 				3FE996232677A6550068E95B /* StartCoordinator.swift in Sources */,
+				1CC542B32677DDBE00A807B4 /* LoggedOutView.swift in Sources */,
 				3FE996212677A50E0068E95B /* ColorConstant.swift in Sources */,
 				3FE9962D2677C6A00068E95B /* accessibilityLocalizebleStrings.swift in Sources */,
 				3FE996292677BC070068E95B /* LocalizableStrings.swift in Sources */,
+				1CC542A72677DCA500A807B4 /* LoggedOutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
