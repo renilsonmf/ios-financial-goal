@@ -10,6 +10,9 @@ import UIKit
 class LoggedOutView: UIView {
     
     //MARK: PageControl
+    
+    let imagePage: [UIImage] = [.imageDescomplicou, .imagePlanejamento, .imageFicaDica, .imageNaPalmaDaMao]
+    
     public let scrollView = UIScrollView()
     
     public let pageControl: UIPageControl = {
@@ -20,20 +23,6 @@ class LoggedOutView: UIView {
         
         return pageControl
     }()
-    
-    public func configureScrollView(view: UIView){
-        scrollView.contentSize = CGSize(width: view.frame.size.width*4, height: scrollView.frame.size.height)
-        scrollView.isPagingEnabled = true
-        
-        let imagePage: [UIImage] = [.imageDescomplicou, .imagePlanejamento, .imageFicaDica, .imageNaPalmaDaMao]
-        
-        for i in 0..<4{
-            let page = UIImageView(frame: CGRect(x: CGFloat(i) * view.frame.size.width, y: 0, width: view.frame.size.width, height: scrollView.frame.size.height))
-            
-            page.image = imagePage[i]
-            scrollView.addSubview(page)
-        }
-    }
     
     func addToViewControllerPageControl(view: UIView){
         view.backgroundColor = .lightGray
@@ -48,14 +37,33 @@ class LoggedOutView: UIView {
         scrollView.setContentOffset(CGPoint(x: CGFloat(current) * scrollView.frame.size.width, y: 0), animated: true)
     }
     
+    //MARK: ScrollView
+    public func configureScrollView(view: UIView){
+        scrollView.contentSize = CGSize(width: view.frame.size.width*4, height: scrollView.frame.size.height)
+        scrollView.isPagingEnabled = true
+    
+        for i in 0..<4{
+            let page = UIImageView(frame: CGRect(x: CGFloat(i) * view.frame.size.width, y: 0, width: view.frame.size.width, height: scrollView.frame.size.height))
+            
+            page.image = imagePage[i]
+            scrollView.addSubview(page)
+        }
+    }
+
+    
     func setFramePageScroll(view: UIView){
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        
+        
         pageControl.frame = CGRect(x: 0, y: scrollView.frame.size.height-18, width: view.frame.size.width, height: 70)
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 460)
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: screenHeight / 5 * 3.5)
         
         if scrollView.subviews.count == 2 {
             configureScrollView(view: view)
         }
     }
+    
     //MARK: BUTTONS
     let buttonCreateAccount: UIButton = {
         let button = UIButton()
